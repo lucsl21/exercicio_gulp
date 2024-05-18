@@ -8,8 +8,8 @@ const sourcemaps = require('gulp-sourcemaps');
 function comprimeImagens() {
     return gulp.src('source/images/*')
         .pipe(imagemin())
-        .pipe(gulp.dest('build/images'))
-}
+        .pipe(gulp.dest('build/images'));
+};
 
 function compilaSass() {
     return gulp.src('source/styles/main.scss')
@@ -19,16 +19,14 @@ function compilaSass() {
        }))
        .pipe(sourcemaps.write('./maps'))
        .pipe(gulp.dest('build/styles'));
-}
+};
 
 function comprimeJavaScript() {
      return gulp.src('source/scripts/*.js')
         .pipe(uglify())
         .pipe(obfuscate())
-        .pipe(gulp.dest('build/scripts'))
-}
-
-
+        .pipe(gulp.dest('build/scripts'));
+};
 
 exports.default = function() {
     gulp.watch('source/styles/main.scss', {ignoreInitial:false},gulp.series(compilaSass));
